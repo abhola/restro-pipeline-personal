@@ -7,6 +7,7 @@ stage('build') {
 		withEnv(["MVN_HOME=$mvnHome"]){
 			sh '"$MVN_HOME/bin/mvn" clean compile package'
 		}
+}
 stage ('deploy') {
 deploy adapters: [tomcat9(credentialsId: 'b0ef6066-d4b1-42f0-883e-40fce2cc5cf8', path: '', url: 'http://65.0.203.212:8080/')], contextPath: null, war: '**/*.war
 }
